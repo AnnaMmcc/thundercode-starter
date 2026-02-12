@@ -1,3 +1,5 @@
+@include('admin.partials.admin-navbar')
+
 <h1>Admin Services</h1>
 <a href="{{ route('services.create') }}">Add new service</a>
 

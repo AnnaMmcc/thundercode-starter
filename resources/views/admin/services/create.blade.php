@@ -1,3 +1,5 @@
+@include('admin.partials.admin-navbar')
+
 <h1>Add New Service</h1>
 
 @if ($errors->any())
