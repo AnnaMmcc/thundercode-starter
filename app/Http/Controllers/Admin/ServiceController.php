@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Service;
 use App\Services\ServiceService;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreServiceRequest;
+use App\Http\Requests\UpdateServiceRequest;
 
 class ServiceController extends Controller
 {
@@ -15,41 +16,49 @@ class ServiceController extends Controller
         $this->service = $service;
     }
 
-    public function store(Request $request)
+
+    public function index()
     {
-        $data = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'price' => 'nullable|numeric',
-            'image' => 'nullable|image|max:2048',
-        ]);
+        $services = Service::all();
+        return view('admin.services.index', compact('services'));
+    }
 
-        $this->service->create($data);
+    public function create()
+    {
+        return view('admin.services.create');
+    }
 
+    public function store(StoreServiceRequest $request)
+    {
+        $this->service->create($request->validated());
         return redirect()->route('admin.services.index')
             ->with('success', 'Service added!');
     }
 
-    public function update(Request $request, Service $service)
+    public function edit(Service $service)
     {
-        $data = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'price' => 'nullable|numeric',
-            'image' => 'nullable|image|max:2048',
-        ]);
+        return view('admin.services.edit', compact('service'));
+    }
 
-        $this->service->update($service, $data);
 
+    public function update(UpdateServiceRequest $request, Service $service)
+    {
+        $this->service->update($service, $request->validated());
         return redirect()->route('admin.services.index')
             ->with('success', 'Service updated!');
     }
 
+
     public function destroy(Service $service)
     {
         $this->service->delete($service);
-
         return redirect()->route('admin.services.index')
             ->with('success', 'Service deleted!');
     }
+
+    public function show(Service $service)
+    {
+        return view('admin.services.show', compact('service'));
+    }
 }
+
