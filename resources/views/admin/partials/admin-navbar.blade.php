@@ -1,7 +1,8 @@
-<nav class="bg-gray-200 p-4 mb-4">
-    <ul class="flex space-x-4">
-        <li><a href="{{ url('/admin/services') }}" class="text-blue-700 hover:underline">Services</a></li>
-        <li><a href="{{ url('/admin/services/create') }}" class="text-blue-700 hover:underline">Add Service</a></li>
-        <li><a href="{{ url('/') }}" class="text-blue-700 hover:underline">Frontend Home</a></li>
-    </ul>
+<nav style="background:#222; color:white; padding:10px;">
+    <a href="{{ route('admin.services.index') }}" style="color:white; margin-right:10px;">Services</a>
+    <a href="{{ route('dashboard') }}" style="color:white;">Dashboard</a>
+    <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+        @csrf
+        <button type="submit" style="background:none;border:none;color:white;cursor:pointer;">Logout</button>
+    </form>
 </nav>

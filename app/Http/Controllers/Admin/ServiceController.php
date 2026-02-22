@@ -36,7 +36,8 @@ class ServiceController extends Controller
 
         Service::create($data);
 
-        return redirect()->route('services.index')->with('success', 'Service added!');
+        return redirect()->route('admin.services.index')
+            ->with('success', 'Service added!');
     }
 
 
@@ -69,7 +70,8 @@ class ServiceController extends Controller
 
         $service->update($data);
 
-        return redirect()->route('services.index')->with('success', 'Services updated!');
+        return redirect()->route('admin.services.index')
+            ->with('success', 'Services updated!');
     }
 
     public function destroy(Service $service)
@@ -80,6 +82,7 @@ class ServiceController extends Controller
 
         $service->delete();
 
-        return redirect()->route('services.index')->with('success', 'Srvice deleted!');
+        return redirect()->route('admin.services.index')
+            ->with('success', 'Srvice deleted!');
     }
 }

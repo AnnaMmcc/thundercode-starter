@@ -12,7 +12,7 @@
     </div>
 @endif
 
-<form action="{{ route('services.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('admin.services.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
     <label>Title:</label>
@@ -30,4 +30,4 @@
     <button type="submit">Save</button>
 </form>
 
-<a href="{{ route('services.index') }}">Back to list</a>
+<a href="{{ route('admin.services.index') }}">Back to list</a>

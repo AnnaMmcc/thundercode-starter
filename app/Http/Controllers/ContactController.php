@@ -26,7 +26,7 @@ class ContactController extends Controller
 
 
         Mail::raw($data['message'], function($message) use ($data) {
-            $message->to('your-email@example.com')
+            $message->to('anja.poslovni.srb@gmail.com')
                 ->subject('New Contact Message from ' . $data['name']);
         });
 
