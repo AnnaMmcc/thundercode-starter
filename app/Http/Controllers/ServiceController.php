@@ -7,17 +7,15 @@ use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
-
     public function index()
     {
-        $services = Service::all();
-        return view('services.index', compact('services'));
-    }
+        $services = Service::latest()->paginate(6);
 
+        return view('frontend.services', compact('services'));
+    }
 
     public function show(Service $service)
     {
-        return view('services.show', compact('service'));
+        return view('frontend.show-service', compact('service'));
     }
 }
-

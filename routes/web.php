@@ -31,10 +31,6 @@ Route::get('/', function () {
     return view('frontend.home', compact('services'));
 });
 
-Route::get('/services', function () {
-    $services = Service::all();
-    return view('frontend.services', compact('services'));
-});
 
 Route::get('/about', function () {
     return view('frontend.about');
