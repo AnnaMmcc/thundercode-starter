@@ -32,7 +32,7 @@ class ServiceController extends Controller
     {
         $this->service->create($request->validated());
         return redirect()->route('admin.services.index')
-            ->with('success', 'Service added!');
+            ->with('success', 'Service added successfully.');
     }
 
     public function edit(Service $service)
@@ -53,7 +53,7 @@ class ServiceController extends Controller
     {
         $this->service->delete($service);
         return redirect()->route('admin.services.index')
-            ->with('success', 'Service deleted!');
+            ->with('success', 'Service deleted successfully.');
     }
 
     public function show(Service $service)

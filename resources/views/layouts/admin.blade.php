@@ -36,6 +36,15 @@
 
     {{-- Content --}}
     <main class="flex-1 p-10">
+        @if(session('success'))
+
+       <div
+        class="mb-6 bg-green-100 border border-green-300 text-green-700 px-6 py-4 rounded-2xl"
+       >
+        {{ session('success') }}
+       </div>
+
+        @endif
         @yield('content')
     </main>
 
