@@ -42,7 +42,7 @@
                         {{ $service->price ? '$'.$service->price : 'Contact Us' }}
                     </span>
 
-                    <a href="#"
+                    <a href="{{ route('services.show', $service) }}"
                        class="bg-black text-white px-4 py-2 rounded-lg hover:opacity-90">
                         Details
                     </a>
