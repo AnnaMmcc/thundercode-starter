@@ -1,33 +1,108 @@
-@include('admin.partials.admin-navbar')
+@extends('layouts.admin')
 
-<h1>Add New Service</h1>
+@section('content')
 
-@if ($errors->any())
-    <div style="color:red;">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+<div class="max-w-3xl">
 
-<form action="{{ route('admin.services.store') }}" method="POST" enctype="multipart/form-data">
-    @csrf
+    <h1 class="text-3xl font-bold mb-8">
+        Add New Service
+    </h1>
 
-    <label>Title:</label>
-    <input type="text" name="title" value="{{ old('title') }}" required><br><br>
+    @if ($errors->any())
 
-    <label>Description:</label>
-    <textarea name="description" required>{{ old('description') }}</textarea><br><br>
+        <div class="bg-red-100 border border-red-300 text-red-700 p-4 rounded-xl mb-6">
 
-    <label>Price:</label>
-    <input type="number" step="0.01" name="price" value="{{ old('price') }}"><br><br>
+            <ul class="list-disc list-inside">
 
-    <label>Image:</label>
-    <input type="file" name="image"><br><br>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
 
-    <button type="submit">Save</button>
-</form>
+            </ul>
 
-<a href="{{ route('admin.services.index') }}">Back to list</a>
+        </div>
+
+    @endif
+
+    <form
+        action="{{ route('admin.services.store') }}"
+        method="POST"
+        enctype="multipart/form-data"
+        class="bg-white rounded-2xl shadow p-8 space-y-6"
+    >
+
+        @csrf
+
+        <div>
+
+            <label class="block mb-2 font-semibold">
+                Title
+            </label>
+
+            <input
+                type="text"
+                name="title"
+                value="{{ old('title') }}"
+                class="w-full border border-gray-300 rounded-xl p-3"
+                required
+            >
+
+        </div>
+
+        <div>
+
+            <label class="block mb-2 font-semibold">
+                Description
+            </label>
+
+            <textarea
+                name="description"
+                rows="5"
+                class="w-full border border-gray-300 rounded-xl p-3"
+                required
+            >{{ old('description') }}</textarea>
+
+        </div>
+
+        <div>
+
+            <label class="block mb-2 font-semibold">
+                Price
+            </label>
+
+            <input
+                type="number"
+                step="0.01"
+                name="price"
+                value="{{ old('price') }}"
+                class="w-full border border-gray-300 rounded-xl p-3"
+            >
+
+        </div>
+
+        <div>
+
+            <label class="block mb-2 font-semibold">
+                Image
+            </label>
+
+            <input
+                type="file"
+                name="image"
+                class="w-full"
+            >
+
+        </div>
+
+        <button
+            type="submit"
+            class="bg-black text-white px-6 py-3 rounded-xl"
+        >
+            Save Service
+        </button>
+
+    </form>
+
+</div>
+
+@endsection
