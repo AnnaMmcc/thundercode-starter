@@ -10,20 +10,12 @@ class AdminDashboardController extends Controller
 {
     public function index()
     {
-        $servicesCount = Service::count();
-
-        $latestService = Service::latest()->first();
-
-        $latestServices = Service::latest()->take(5)->get();
-
-        $totalValue = Service::sum('price');
-
-        return view('admin.dashboard', compact(
-            'servicesCount',
-            'latestService',
-            'latestServices',
-            'totalValue'
-        ));
-
+        return view('admin.dashboard', [
+            'totalServices' => Service::count(),
+            'totalMessages' => ContactMessage::count(),
+            'latestServices' => Service::latest()->take(5)->get(),
+            'totalValue' => Service::sum('price'),
+        ]);
+    }
 }
-}
+
