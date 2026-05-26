@@ -87,10 +87,16 @@
             </label>
 
             <input
-                type="file"
-                name="image"
-                class="w-full"
+          type="file"
+         name="image"
+         id="image"
+         class="w-full"
             >
+
+<img
+    id="preview"
+    class="w-48 rounded-2xl mt-4 hidden"
+>
 
         </div>
 
@@ -106,3 +112,25 @@
 </div>
 
 @endsection
+
+
+<script>
+
+    const imageInput = document.getElementById('image');
+    const preview = document.getElementById('preview');
+
+    imageInput.addEventListener('change', function (e) {
+
+        const file = e.target.files[0];
+
+        if(file) {
+
+            preview.src = URL.createObjectURL(file);
+
+            preview.classList.remove('hidden');
+
+        }
+
+    });
+
+</script>
