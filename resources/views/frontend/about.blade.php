@@ -1,1 +1,5 @@
-@include('frontend.partials.navbar')
+@extends('layouts.fronted')
+@section('content')
+
+@endsection
+

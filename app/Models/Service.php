@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Service extends Model
 {
     protected $table = 'services';
@@ -15,4 +15,9 @@ class Service extends Model
         'price',
         'image',
     ];
+
+    public function category()
+{
+    return $this->belongsTo(Category::class);
+}
 }

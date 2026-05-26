@@ -12,6 +12,36 @@
     </p>
 </div>
 
+<form method="GET" class="flex gap-3 mb-6">
+
+    <input
+        type="text"
+        name="search"
+        placeholder="Search services..."
+        value="{{ request('search') }}"
+        class="border p-2 rounded"
+    >
+
+    <select name="category" class="border p-2 rounded">
+        <option value="">All categories</option>
+
+        @foreach($categories as $category)
+            <option value="{{ $category->id }}"
+                {{ request('category') == $category->id ? 'selected' : '' }}>
+                {{ $category->name }}
+            </option>
+        @endforeach
+    </select>
+
+    <button class="bg-blue-500 text-white px-4 py-2 rounded">
+        Filter
+    </button>
+    <a href="{{ route('services.index') }}" class="text-gray-500 underline">
+    Reset
+</a>
+
+</form>
+
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
     @foreach($services as $service)
