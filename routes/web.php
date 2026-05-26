@@ -22,7 +22,12 @@ Route::middleware(['auth', 'admin'])
     ->prefix('admin')
     ->name('admin.')
     ->group(function () {
+
+        Route::get('/', [\App\Http\Controllers\Admin\AdminDashboardController::class, 'index'])
+            ->name('dashboard');
+
         Route::resource('services', \App\Http\Controllers\Admin\ServiceController::class);
+
     });
 
 
