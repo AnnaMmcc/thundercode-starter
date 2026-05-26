@@ -21,7 +21,7 @@
 
 </div>
 
-{{-- 🔥 OVO JE TVOJ DEO --}}
+
 <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6">
 
     <h2 class="text-2xl font-bold mb-6">
