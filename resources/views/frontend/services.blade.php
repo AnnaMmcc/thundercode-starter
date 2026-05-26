@@ -1,80 +1,53 @@
 @extends('layouts.fronted')
 
 @section('content')
-
-<div class="mb-10">
-    <h1 class="text-4xl font-bold mb-3">
-        Our Services
-    </h1>
-
-    <p class="text-gray-600">
-        Explore our professional digital services and solutions.
-    </p>
-</div>
-
-<form method="GET" class="flex gap-3 mb-6">
-
-    <input
-        type="text"
-        name="search"
-        placeholder="Search services..."
-        value="{{ request('search') }}"
-        class="border p-2 rounded"
-    >
-
-    <select name="category" class="border p-2 rounded">
-        <option value="">All categories</option>
-
-        @foreach($categories as $category)
-            <option value="{{ $category->id }}"
-                {{ request('category') == $category->id ? 'selected' : '' }}>
-                {{ $category->name }}
-            </option>
-        @endforeach
-    </select>
-
-    <button class="bg-blue-500 text-white px-4 py-2 rounded">
-        Filter
-    </button>
-    <a href="{{ route('services.index') }}" class="text-gray-500 underline">
-    Reset
-</a>
-
-</form>
-
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
     @foreach($services as $service)
 
-        <div class="bg-white rounded-2xl shadow hover:shadow-xl transition overflow-hidden">
+        <div class="group bg-white dark:bg-gray-800 rounded-2xl shadow hover:shadow-xl transition overflow-hidden">
 
+            {{-- IMAGE --}}
             @if($service->image)
-                <img
-                    src="{{ asset('storage/'.$service->image) }}"
-                    class="w-full h-52 object-cover"
-                    alt="{{ $service->title }}"
-                >
+                <div class="overflow-hidden">
+                    <img
+                        src="{{ asset('storage/'.$service->image) }}"
+                        class="w-full h-52 object-cover group-hover:scale-105 transition duration-300"
+                        alt="{{ $service->title }}"
+                    >
+                </div>
             @endif
 
-            <div class="p-5">
+            {{-- CONTENT --}}
+            <div class="p-6 flex flex-col gap-3">
 
-                <h2 class="text-2xl font-semibold mb-3">
+                {{-- TITLE --}}
+                <h2 class="text-xl font-bold text-gray-900 dark:text-white">
                     {{ $service->title }}
                 </h2>
 
-                <p class="text-gray-600 mb-5">
-                    {{ Str::limit($service->description, 120) }}
+                {{-- CATEGORY (ako imaš) --}}
+                @if($service->category)
+                    <span class="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full w-fit">
+                        {{ $service->category->name }}
+                    </span>
+                @endif
+
+                {{-- DESCRIPTION --}}
+                <p class="text-gray-600 dark:text-gray-300 text-sm">
+                    {{ Str::limit($service->description, 90) }}
                 </p>
 
-                <div class="flex items-center justify-between">
+                {{-- BOTTOM --}}
+                <div class="flex items-center justify-between mt-3">
 
-                    <span class="font-bold text-lg">
-                        {{ $service->price ? '$'.$service->price : 'Contact Us' }}
+                    <span class="text-lg font-bold text-black dark:text-white">
+                        {{ $service->price ? '$'.$service->price : 'Contact' }}
                     </span>
 
                     <a href="{{ route('services.show', $service) }}"
-                       class="bg-black text-white px-4 py-2 rounded-lg hover:opacity-90">
-                        Details
+                       class="px-4 py-2 bg-black text-white dark:bg-white dark:text-black rounded-xl text-sm font-medium hover:opacity-90 transition">
+                        View
                     </a>
 
                 </div>
@@ -86,5 +59,4 @@
     @endforeach
 
 </div>
-
 @endsection
