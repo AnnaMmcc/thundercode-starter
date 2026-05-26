@@ -27,7 +27,9 @@ Route::middleware(['auth', 'admin'])
             ->name('dashboard');
 
         Route::resource('services', \App\Http\Controllers\Admin\ServiceController::class);
-
+       
+    Route::resource('messages', \App\Http\Controllers\Admin\ContactMessageController::class)
+    ->only(['index', 'show', 'destroy']);
     });
 
 
