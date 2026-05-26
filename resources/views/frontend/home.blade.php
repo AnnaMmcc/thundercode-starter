@@ -165,5 +165,96 @@
     </div>
 
 </section>
+<section class="pb-20">
 
+    <div class="text-center mb-12">
+
+        <h2 class="text-4xl font-bold mb-4">
+            What Clients Say
+        </h2>
+
+        <p class="text-gray-600">
+            Trusted by modern businesses and startups.
+        </p>
+
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <div class="bg-white rounded-2xl shadow p-6">
+
+            <p class="text-gray-600 mb-6">
+                “Amazing Laravel starter with clean architecture and modern UI.”
+            </p>
+
+            <h3 class="font-bold">
+                Sarah Johnson
+            </h3>
+
+            <p class="text-sm text-gray-500">
+                Startup Founder
+            </p>
+
+        </div>
+
+        <div class="bg-white rounded-2xl shadow p-6">
+
+            <p class="text-gray-600 mb-6">
+                “Perfect starting point for business websites and SaaS projects.”
+            </p>
+
+            <h3 class="font-bold">
+                Michael Lee
+            </h3>
+
+            <p class="text-sm text-gray-500">
+                Web Developer
+            </p>
+
+        </div>
+
+        <div class="bg-white rounded-2xl shadow p-6">
+
+            <p class="text-gray-600 mb-6">
+                “Professional dashboard and responsive frontend out of the box.”
+            </p>
+
+            <h3 class="font-bold">
+                Emily Carter
+            </h3>
+
+            <p class="text-sm text-gray-500">
+                Agency Owner
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+<section class="pb-20">
+
+    <div class="bg-black text-white rounded-3xl p-12 text-center">
+
+        <h2 class="text-5xl font-bold mb-6">
+            Ready to Build Faster?
+        </h2>
+
+        <p class="text-gray-300 text-xl mb-8 max-w-2xl mx-auto">
+
+            Launch modern Laravel business websites with a clean,
+            scalable and professional starter template.
+
+        </p>
+
+        <a href="/contact"
+           class="inline-block bg-white text-black px-8 py-4 rounded-2xl font-bold">
+
+            Get Started
+
+        </a>
+
+    </div>
+
+</section>
 @endsection

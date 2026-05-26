@@ -14,6 +14,6 @@
 <main class="container mx-auto px-6 py-10">
     @yield('content')
 </main>
-
+@include('frontend.partials.footer')
 </body>
 </html>
