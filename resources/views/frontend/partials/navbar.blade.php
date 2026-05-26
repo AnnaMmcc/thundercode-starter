@@ -58,6 +58,15 @@
                             Messages
                         </a>
 
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <button type="submit"
+                             class="text-gray-700 dark:text-gray-300 font-medium hover:text-black dark:hover:text-white">
+                              Logout
+                             </button>
+                        </form>
+
                     @endif
 
                 @else
@@ -96,7 +105,7 @@
 
         <button id="darkToggleMobile"
             class="px-3 py-1 border rounded text-sm text-gray-700 dark:text-gray-300">
-            🌙 
+            🌙
         </button>
 
         @auth
@@ -104,6 +113,14 @@
                 <a href="{{ route('admin.dashboard') }}" class="block">Admin</a>
                 <a href="{{ route('admin.services.index') }}" class="block">Services</a>
                 <a href="{{ route('admin.messages.index') }}" class="block">Messages</a>
+                  <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <button type="submit"
+                             class="text-gray-700 dark:text-gray-300 font-medium hover:text-black dark:hover:text-white">
+                              Logout
+                             </button>
+                        </form>
             @endif
         @else
             <a href="/login" class="block">Login</a>
